@@ -44,7 +44,9 @@
 
 		padding: 0 12px;
 
-		display: block;
+		display: inline;
+
+		box-sizing: border-box;
 
 		&:focus {
 			outline-color: #00577d !important;
@@ -59,5 +61,12 @@
 
 	.errorBorder {
 		border: solid 1px #a30000;
+	}
+
+	@media (max-width: 26.25rem) {
+		div,
+		input {
+			width: 100%;
+		}
 	}
 </style>

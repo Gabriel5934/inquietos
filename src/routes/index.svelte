@@ -82,6 +82,12 @@
 		}
 	}
 
+	@media (max-width: 320px) {
+		:global(html) {
+			font-size: 10px;
+		}
+	}
+
 	.root {
 		display: flex;
 		flex-direction: column;
