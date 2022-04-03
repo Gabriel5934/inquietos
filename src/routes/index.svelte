@@ -25,13 +25,11 @@
 		<img src="../../static/images/logo.png" alt="Inquietos" />
 	</picture>
 
-	<form action="./">
-		<Input placeholder="Nome" required />
-		<Input placeholder="Email" required />
-		<Input placeholder="Empresa (Opcional)" />
-		<Input placeholder="Telefone" mask="+{55}(00)00000-0000" required />
-		<Button text="Cadastrar" type="submit" />
-	</form>
+	<Input placeholder="Nome" required />
+	<Input placeholder="Email" required />
+	<Input placeholder="Empresa (Opcional)" />
+	<Input placeholder="Telefone" mask="+{55}(00)00000-0000" required />
+	<Button text="Cadastrar" type="submit" />
 </div>
 
 <style lang="scss">
@@ -39,10 +37,21 @@
 		font-family: 'Manrope', sans-serif;
 	}
 
+	:global(html) {
+		font-size: 16px;
+	}
+
+	@media (max-width: 750px) {
+		:global(html) {
+			font-size: 12px;
+		}
+	}
+
 	.root {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		padding: 3.15rem 16px;
 	}
 
 	.medium {
@@ -59,7 +68,7 @@
 	}
 
 	.questions {
-		margin: 50px 0 50px 0;
+		margin-bottom: 3.15rem;
 	}
 
 	.info {
@@ -71,13 +80,13 @@
 	}
 
 	h1 {
-		font-size: 36px;
+		font-size: 2.25rem;
 		margin: 0;
 	}
 
 	p {
 		margin: 0;
-		font-size: 24px;
+		font-size: 1.5rem;
 	}
 
 	img {

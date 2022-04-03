@@ -26,7 +26,7 @@
 	}
 
 	.small {
-		padding: 5.34px 10.67px;
+		padding: px 10.67px;
 		font-size: 16px;
 	}
 

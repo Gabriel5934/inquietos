@@ -18,7 +18,7 @@
 		font-size: 20px;
 		font-family: 'Manrope', sans-serif;
 
-		width: 420px;
+		width: 26.25rem;
 		height: 60px;
 
 		margin: 15px 0;
