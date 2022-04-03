@@ -42,9 +42,9 @@
 	</div>
 
 	<picture class="logo">
-		<source srcset="../../static/images/logo.webp" type="image/webp" />
-		<source srcset="../../static/images/logo.png" type="image/png" />
-		<img src="../../static/images/logo.png" alt="Inquietos" />
+		<source srcset="/images/logo.webp" type="image/webp" />
+		<source srcset="/images/logo.png" type="image/png" />
+		<img src="/images/logo.png" alt="Inquietos" />
 	</picture>
 
 	<form on:submit|preventDefault={handleSubmit}>
