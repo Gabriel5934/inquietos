@@ -1,6 +1,28 @@
 <script lang="ts">
 	import Input from '../components/Input.svelte';
 	import Button from '../components/Button.svelte';
+
+	let formData = {
+		name: '',
+		email: '',
+		company: '',
+		phone: ''
+	};
+
+	let submitted = false;
+
+	const emailRegex = new RegExp(
+		/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+	);
+
+	$: validEmail = emailRegex.test(formData.email.toLowerCase());
+	$: validPhone = formData.phone.length === 17;
+
+	const handleSubmit = () => {
+		submitted = true;
+
+		console.log(formData);
+	};
 </script>
 
 <link rel="stylesheet" href="../../styles/fonts.css" />
@@ -25,11 +47,24 @@
 		<img src="../../static/images/logo.png" alt="Inquietos" />
 	</picture>
 
-	<Input placeholder="Nome" required />
-	<Input placeholder="Email" required />
-	<Input placeholder="Empresa (Opcional)" />
-	<Input placeholder="Telefone" mask="+{55}(00)00000-0000" required />
-	<Button text="Cadastrar" type="submit" />
+	<form on:submit|preventDefault={handleSubmit}>
+		<Input placeholder="Nome" bind:value={formData.name} error={!formData.name && submitted} />
+		<Input
+			placeholder="Email"
+			bind:value={formData.email}
+			error={(!formData.email || !validEmail) && submitted}
+			valid={validEmail}
+		/>
+		<Input placeholder="Empresa (Opcional)" bind:value={formData.company} />
+		<Input
+			placeholder="Telefone"
+			mask="+{55}(00)00000-0000"
+			bind:value={formData.phone}
+			error={(!formData.phone || !validPhone) && submitted}
+			valid={validPhone}
+		/>
+		<Button text="Cadastrar" type="submit" />
+	</form>
 </div>
 
 <style lang="scss">

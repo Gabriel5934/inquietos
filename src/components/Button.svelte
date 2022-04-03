@@ -4,7 +4,7 @@
 	export let size: 'small' | 'medium' | 'large' = 'medium';
 </script>
 
-<button {type} class={size}>{text}</button>
+<button {type} class={size} on:click>{text}</button>
 
 <style lang="scss">
 	button {
@@ -26,7 +26,7 @@
 	}
 
 	.small {
-		padding: px 10.67px;
+		padding: 5.34px 10.67px;
 		font-size: 16px;
 	}
 
