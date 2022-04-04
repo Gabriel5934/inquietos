@@ -42,6 +42,7 @@
 	</div>
 
 	<picture>
+		<source srcset="/images/logo.svg" type="image/svg+xml" />
 		<source srcset="/images/logo.webp" type="image/webp" />
 		<img src="/images/logo.png" alt="logo" />
 	</picture>
