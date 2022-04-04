@@ -4,7 +4,7 @@
 	export let size: 'small' | 'medium' | 'large' = 'medium';
 </script>
 
-<button {type} class={size}>{text}</button>
+<button {type} class={size}>{text}<slot /></button>
 
 <style lang="scss">
 	button {

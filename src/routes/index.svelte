@@ -38,13 +38,12 @@
 			prática
 		</p>
 		<p class="light">cadastre-se para receber informações do nosso lançamento</p>
-		<Button text="Conheça os fundadores" type="button" size="small" />
+		<Button type="button" size="small"><a href="#founders">Conheça os fundadores</a></Button>
 	</div>
 
-	<picture class="logo">
+	<picture>
 		<source srcset="/images/logo.webp" type="image/webp" />
-		<source srcset="/images/logo.png" type="image/png" />
-		<img src="/images/logo.png" alt="Inquietos" />
+		<img src="/images/logo.png" alt="logo" />
 	</picture>
 
 	<form on:submit|preventDefault={handleSubmit}>
@@ -65,6 +64,51 @@
 		/>
 		<Button text="Cadastrar" type="submit" />
 	</form>
+
+	<div class="founders" id="founders">
+		<div class="claudenir">
+			<picture>
+				<source srcset="/images/claudenir.webp" type="image/webp" />
+				<img src="/images/claudenir.jpg" alt="claudenir" />
+			</picture>
+			<h2>Claudenir Andrade</h2>
+			<p>
+				Diretor de Tecnologia e Marketing do Grupo Elgin/Bematech<br />
+				Diretor de ISV na AFRAC<br />
+				Formado em Analise de Sistemas em Madrid <br />
+				Segunda Gradução em Marketing pela FGV <br />
+				MBA em Gestão de Projetos e inovação com modulos na China e EUA<br />
+				Cursou Inovação e Crowdsourcing na Innocentive - Philadelphia<br />
+				Regional Director da Microsoft<br />
+				Reconhecido MVP Microsoft por 21 vezes consecutivas.<br />
+				Escritor de quatro livros de Automação Comercial e C#<br />
+				Estuda e trabalha com tecnologia há 27 anos<br />
+				Foi responsável pela especificando do protocolo SCU na automação comercial.<br />
+				Passagens pela empresa Bematech (1997-2003) e Daruma (2003-2019) onde foi responsável pela criação
+				das DLLs e toda a integração tecnológica e a criação dos programas Bematech Software Partner
+				e Daruma Developers Community.
+			</p>
+		</div>
+
+		<div class="glaydson">
+			<picture>
+				<source srcset="/images/glaydson.webp" type="image/webp" />
+				<img src="/images/glaydson.jpg" alt="glaydson" />
+			</picture>
+			<h2>Glaydson Bertozzi</h2>
+			<p>
+				Fundador da IT FAST e membro acadêmico no ITA<br />
+				Formação pelo ITA, MBA pela FGV, Inovação pela Unicamp e DSc pela USP<br />
+				Membro IEEE, ACM e SBC<br />
+				Autor de mais de 20 publicações em livros e revistas nacionais e internacionais
+			</p>
+		</div>
+	</div>
+
+	<video controls preload="none" poster="/images/firstframe.png">
+		<source src="/videos/ad.webm" type="video/webm" />
+		<source src="/videos/ad.mp4" type="video/mp4" />
+	</video>
 </div>
 
 <style lang="scss">
@@ -74,6 +118,7 @@
 
 	:global(html) {
 		font-size: 16px;
+		scroll-behavior: smooth;
 	}
 
 	@media (max-width: 750px) {
@@ -137,5 +182,64 @@
 	form {
 		display: inline-block;
 		text-align: center;
+	}
+
+	a {
+		font-family: 'Manrope', Sans-serif;
+		color: white;
+		text-decoration: none;
+	}
+
+	.founders {
+		display: flex;
+		padding: 2rem 0;
+		margin-top: 4rem;
+		justify-content: space-evenly;
+		width: 100%;
+		gap: 2rem;
+
+		@media (max-width: 1000px) {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		div {
+			width: 50%;
+			text-align: center;
+
+			@media (max-width: 1000px) {
+				width: 100%;
+				margin: 0 1rem;
+			}
+
+			h2 {
+				font-size: 3rem;
+				margin: 0;
+			}
+
+			p {
+				font-size: 1rem;
+				display: inline-block;
+				max-width: 500px;
+
+				@media (max-width: 1000px) {
+					max-width: none;
+				}
+			}
+
+			img {
+				border-radius: 100%;
+				aspect-ratio: 1 / 1;
+				width: 20rem;
+				height: 20rem;
+				object-fit: cover;
+			}
+		}
+	}
+
+	video {
+		width: 80%;
+		border: 1px solid #00577d;
+		margin-top: 2rem;
 	}
 </style>
