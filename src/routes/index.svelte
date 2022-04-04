@@ -1,6 +1,8 @@
 <script lang="ts">
 	import Input from '../components/Input.svelte';
 	import Button from '../components/Button.svelte';
+	import { db } from '../firebase';
+	import { addDoc, collection } from 'firebase/firestore';
 
 	let formData = {
 		name: '',
@@ -18,10 +20,18 @@
 	$: validEmail = emailRegex.test(formData.email.toLowerCase());
 	$: validPhone = formData.phone.length === 17;
 
-	const handleSubmit = () => {
+	const handleSubmit = async () => {
 		submitted = true;
 
-		console.log(formData);
+		if (validEmail && validPhone && formData.name && formData.email) {
+			try {
+				const docRef = await addDoc(collection(db, 'users'), formData);
+
+				console.log('Document written with ID: ', docRef.id);
+			} catch (e) {
+				console.error('Error adding document: ', e);
+			}
+		}
 	};
 </script>
 
