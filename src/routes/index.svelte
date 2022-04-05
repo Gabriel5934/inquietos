@@ -14,6 +14,7 @@
 	};
 
 	let submitted = false;
+	let loading = false;
 
 	const emailRegex = new RegExp(
 		/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -25,14 +26,16 @@
 	const handleSubmit = async () => {
 		submitted = true;
 
-		if (validEmail && validPhone && formData.name && formData.email) {
+		if (true) {
 			try {
-				const docRef = await addDoc(collection(db, 'users'), formData);
+				loading = true;
+				await addDoc(collection(db, 'users'), formData);
 
 				name.update(() => formData.name.split(' ')[0]);
 				goto('thanks');
 			} catch (e) {
-				console.error('Error adding document: ', e);
+				loading = false;
+				alert('Something went wrong. Please try again.');
 			}
 		}
 	};
@@ -78,7 +81,7 @@
 			error={(!formData.phone || !validPhone) && submitted}
 			valid={validPhone}
 		/>
-		<Button text="Cadastrar" type="submit" />
+		<Button text="Cadastrar" type="submit" {loading} />
 	</form>
 
 	<div class="founders" id="founders">
