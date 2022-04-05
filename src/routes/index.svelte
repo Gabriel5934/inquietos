@@ -26,7 +26,7 @@
 	const handleSubmit = async () => {
 		submitted = true;
 
-		if (true) {
+		if (validEmail && validPhone && formData.name) {
 			try {
 				loading = true;
 				await addDoc(collection(db, 'users'), formData);
