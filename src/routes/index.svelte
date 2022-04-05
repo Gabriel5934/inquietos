@@ -3,6 +3,8 @@
 	import Button from '../components/Button.svelte';
 	import { db } from '../firebase';
 	import { addDoc, collection } from 'firebase/firestore';
+	import { name } from '../store/user';
+	import { goto } from '$app/navigation';
 
 	let formData = {
 		name: '',
@@ -27,7 +29,8 @@
 			try {
 				const docRef = await addDoc(collection(db, 'users'), formData);
 
-				console.log('Document written with ID: ', docRef.id);
+				name.update(() => formData.name.split(' ')[0]);
+				goto('thanks');
 			} catch (e) {
 				console.error('Error adding document: ', e);
 			}
@@ -35,7 +38,9 @@
 	};
 </script>
 
-<link rel="stylesheet" href="../../styles/fonts.css" />
+<svelte:head>
+	<link rel="stylesheet" href="../../styles/fonts.css" />
+</svelte:head>
 
 <div class="root">
 	<div class="questions medium">
