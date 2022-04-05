@@ -1,10 +1,25 @@
 <script lang="ts">
+	import { Circle } from 'svelte-loading-spinners';
+
 	export let text = '';
 	export let type: 'submit' | 'reset' | 'button' = 'button';
-	export let size: 'small' | 'medium' | 'large' = 'medium';
+	export let size: 'small' | 'medium' = 'medium';
+	export let loading = false;
+
+	const buttonSize = {
+		small: 16,
+		medium: 24
+	};
 </script>
 
-<button {type} class={size}>{text}</button>
+<button {type} class={size}>
+	{#if loading}
+		<Circle size={buttonSize[size]} color="#ffffff" unit="px" duration="1s" />
+	{:else}
+		{text}
+	{/if}
+	<slot />
+</button>
 
 <style lang="scss">
 	button {

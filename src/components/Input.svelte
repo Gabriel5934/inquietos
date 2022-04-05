@@ -37,7 +37,7 @@
 		width: 26.25rem;
 		height: 60px;
 
-		margin-bottom: 5px;
+		margin-bottom: 10px;
 
 		border-radius: 4px;
 		border: solid 1px #d4d4d8;
