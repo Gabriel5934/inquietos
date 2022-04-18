@@ -1,14 +1,25 @@
-<script>
+<script lang="ts">
 	import { fade, fly } from 'svelte/transition';
 
 	import Button from './Button.svelte';
 
 	export let open = false;
 
-	const handleClose = () => {
-		open = false;
+	const handleClose = (event: KeyboardEvent | MouseEvent) => {
+		if (event instanceof KeyboardEvent) {
+			if (event.key === 'Escape') {
+				open = false;
+				return;
+			} else {
+				return;
+			}
+		} else {
+			open = false;
+		}
 	};
 </script>
+
+<svelte:window on:keydown={handleClose} />
 
 {#if open}
 	<div in:fade out:fade class="backdrop">
