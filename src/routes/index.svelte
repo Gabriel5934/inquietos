@@ -5,6 +5,7 @@
 	import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
 	import { onMount } from 'svelte';
 
+	import Form from '../components/Form.svelte';
 	import Input from '../components/Input.svelte';
 	import Button from '../components/Button.svelte';
 	import Popup from '../components/Popup.svelte';
@@ -81,7 +82,7 @@
 		<img src="/images/logo.png" alt="logo" />
 	</picture>
 
-	<form on:submit|preventDefault={handleSubmit}>
+	<Form on:submit={handleSubmit}>
 		<Input placeholder="Nome" bind:value={formData.name} error={!formData.name && submitted} />
 		<Input
 			placeholder="Email"
@@ -98,7 +99,7 @@
 			valid={validPhone}
 		/>
 		<Button text="Cadastrar" type="submit" {loading} />
-	</form>
+	</Form>
 
 	<div class="founders" id="founders">
 		<div class="claudenir">
