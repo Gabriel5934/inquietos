@@ -12,7 +12,7 @@
 	};
 </script>
 
-<button {type} class={size}>
+<button {type} class={size} on:click>
 	{#if loading}
 		<Circle size={buttonSize[size]} color="#ffffff" unit="px" duration="1s" />
 	{:else}

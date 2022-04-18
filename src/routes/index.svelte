@@ -7,6 +7,7 @@
 
 	import Input from '../components/Input.svelte';
 	import Button from '../components/Button.svelte';
+	import Popup from '../components/Popup.svelte';
 	import { db, app } from '../firebase';
 
 	onMount(() => {
@@ -25,6 +26,7 @@
 
 	let submitted = false;
 	let loading = false;
+	let popupOpen = false;
 
 	const emailRegex = new RegExp(
 		/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -37,6 +39,8 @@
 		submitted = true;
 
 		if (validEmail && validPhone && formData.name) {
+			popupOpen = false;
+
 			try {
 				loading = true;
 				await addDoc(collection(db, 'users'), formData);
@@ -45,7 +49,7 @@
 				goto('thanks');
 			} catch (e) {
 				loading = false;
-				alert('Something went wrong. Please try again.');
+				popupOpen = true;
 			}
 		}
 	};
@@ -56,6 +60,8 @@
 </svelte:head>
 
 <div class="root">
+	<Popup open={popupOpen} />
+
 	<div class="questions medium">
 		<h1>trabalha com automação comercial?</h1>
 		<h1>quer inovar na prática?</h1>
