@@ -1,10 +1,16 @@
 <script lang="ts">
 	import Input from '../components/Input.svelte';
 	import Button from '../components/Button.svelte';
-	import { db } from '../firebase';
+	import { db, app } from '../firebase';
 	import { addDoc, collection } from 'firebase/firestore';
 	import { name } from '../store/user';
 	import { goto } from '$app/navigation';
+	import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
+
+	initializeAppCheck(app, {
+		provider: new ReCaptchaV3Provider('6Ld5NYEfAAAAAN4kuIKFcfdglr8VgoRdhmCWULJx'),
+		isTokenAutoRefreshEnabled: true
+	});
 
 	let formData = {
 		name: '',
