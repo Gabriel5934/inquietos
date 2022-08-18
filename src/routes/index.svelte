@@ -125,20 +125,6 @@
 				e Daruma Developers Community.
 			</p>
 		</div>
-
-		<div class="glaydson">
-			<picture>
-				<source srcset="/images/glaydson.webp" type="image/webp" />
-				<img src="/images/glaydson.jpg" alt="glaydson" />
-			</picture>
-			<h2>Glaydson Bertozzi</h2>
-			<p>
-				Fundador da IT FAST e membro acadêmico no ITA<br />
-				Formação pelo ITA, MBA pela FGV, Inovação pela Unicamp e DSc pela USP<br />
-				Membro IEEE, ACM e SBC<br />
-				Autor de mais de 20 publicações em livros e revistas nacionais e internacionais
-			</p>
-		</div>
 	</div>
 
 	<video controls preload="none" poster="/images/firstframe.png">
